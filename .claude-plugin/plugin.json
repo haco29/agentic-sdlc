@@ -1,0 +1,13 @@
+{
+  "name": "agentic-sdlc",
+  "version": "0.1.0",
+  "description": "An agentic SDLC for coding agents: /spec → /plan → /build → /test → /review → /code-simplify → /pr, with artifacts per branch and gates before every PR. Built on addyosmani/agent-skills.",
+  "author": {
+    "name": "Harel Coman",
+    "url": "https://github.com/haco29"
+  },
+  "homepage": "https://github.com/haco29/agentic-sdlc",
+  "repository": "https://github.com/haco29/agentic-sdlc",
+  "license": "MIT",
+  "keywords": ["sdlc", "spec-driven-development", "tdd", "code-review", "skills"]
+}

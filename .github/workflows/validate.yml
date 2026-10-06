@@ -1,0 +1,25 @@
+name: validate
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install -g @anthropic-ai/claude-code
+      - name: Validate manifests and components
+        run: |
+          claude plugin validate --strict .claude-plugin/marketplace.json
+          claude plugin validate --strict .claude-plugin/plugin.json
+          for dir in commands skills agents; do claude plugin validate --strict "$dir"; done
+      - name: Check shell scripts
+        run: |
+          bash -n scripts/install.sh
+          bash -n scripts/sync-upstream.sh
