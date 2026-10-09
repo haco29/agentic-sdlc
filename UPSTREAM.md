@@ -6,11 +6,13 @@ The skills, agents and references listed below are vendored from
 
 Commit: 1401c8b8030e023baeebb31781a6653fe8e93026
 
-Two mechanical rewrites are applied by `scripts/sync-upstream.sh`, nothing else:
+Three mechanical rewrites are applied by `scripts/sync-upstream.sh`, nothing else:
 
-1. Skill references `agent-skills:<skill>` become `agentic-sdlc:<skill>`.
+1. Skill references `agent-skills:<skill>` become `sdlc:<skill>`.
 2. Artifact paths `SPEC.md`, `tasks/plan.md` and `tasks/todo.md` become
    `sdlc/<branch>/spec.md`, `plan.md` and `todo.md`.
+3. Command names `/spec`, `/plan`, `/build`, `/test`, `/review`, `/code-simplify`
+   and `/pr` become `/sdlc:spec` and so on, because plugin commands are namespaced.
 
 To update, run `scripts/sync-upstream.sh <commit>` and review the diff.
 

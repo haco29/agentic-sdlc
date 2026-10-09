@@ -2,11 +2,11 @@
 description: Slice the approved spec into small, testable tasks; writes sdlc/<branch>/plan.md and todo.md
 ---
 
-Paths, the coverage checklist and the gates come from the `agentic-sdlc:sdlc-artifacts` skill.
+Paths, the coverage checklist and the gates come from the `sdlc:sdlc-artifacts` skill.
 
-1. **Read the spec.** Missing `$DIR/spec.md`: stop and suggest `/spec`. `Status: Draft`: say
+1. **Read the spec.** Missing `$DIR/spec.md`: stop and suggest `/sdlc:spec`. `Status: Draft`: say
    so and ask whether to continue anyway.
-2. **Plan, read-only.** Invoke `agentic-sdlc:planning-and-task-breakdown`. No code changes in
+2. **Plan, read-only.** Invoke `sdlc:planning-and-task-breakdown`. No code changes in
    this step.
 3. **Don't overwrite work in progress.** If `$DIR/plan.md` or `todo.md` exists with unticked
    tasks for different work, stop and ask.
@@ -15,9 +15,9 @@ Paths, the coverage checklist and the gates come from the `agentic-sdlc:sdlc-art
    - Tasks: vertical slices, each with acceptance criteria (mapped to spec success
      criteria), the test that proves it, and the files it touches. Prefer 2–5 tasks.
    - Risks.
-   - SDLC command coverage: tick `/spec` (if the spec is Approved) and `/plan`.
+   - SDLC command coverage: tick `/sdlc:spec` (if the spec is Approved) and `/sdlc:plan`.
    - Test evidence: empty.
 5. **Write `$DIR/todo.md`**: one checkbox per task, same numbering.
 6. **Review together.** Present the plan and wait for approval. Revise until the user says
    yes, then commit `plan.md` and `todo.md` as `docs(sdlc): plan for <feature>`.
-7. Stop. The next step is `/build`.
+7. Stop. The next step is `/sdlc:build`.
