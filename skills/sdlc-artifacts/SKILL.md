@@ -1,12 +1,12 @@
 ---
 name: sdlc-artifacts
-description: Defines where SDLC artifacts live (sdlc/<branch>/spec.md, plan.md, todo.md, review.md), the command coverage checklist, the test evidence log, and the gates a branch must pass before a ready PR. Use whenever running /spec, /plan, /build, /test, /review, /code-simplify or /pr, when writing or reading a spec, plan or task list, or when asked whether a branch is ready for review.
+description: Defines where SDLC artifacts live (sdlc/<branch>/spec.md, plan.md, todo.md, review.md), the command coverage checklist, the test evidence log, and the gates a branch must pass before a ready PR. Use whenever running /sdlc:spec, /sdlc:plan, /sdlc:build, /sdlc:test, /sdlc:review, /sdlc:code-simplify or /sdlc:pr, when writing or reading a spec, plan or task list, or when asked whether a branch is ready for review.
 ---
 
 # SDLC artifacts and gates
 
-The loop is `/spec → /plan → /build → /test → /review → /code-simplify → /pr`. Every
-command leaves evidence in the repo, so the next session, the reviewer and `/pr` can see
+The loop is `/sdlc:spec → /sdlc:plan → /sdlc:build → /sdlc:test → /sdlc:review → /sdlc:code-simplify → /sdlc:pr`. Every
+command leaves evidence in the repo, so the next session, the reviewer and `/sdlc:pr` can see
 what actually happened. Chat history is not evidence.
 
 ## Where artifacts live
@@ -28,14 +28,14 @@ DIR="sdlc/$BRANCH"
 
 | File | Written by | Holds |
 |---|---|---|
-| `spec.md` | `/spec` | Status, objective, scope and non-goals, success criteria, edge-case decisions, open questions |
-| `plan.md` | `/plan`, then updated by every command | Approach, tasks with acceptance criteria, risks, command coverage, test evidence |
-| `todo.md` | `/plan`, ticked by `/build` | One checkbox per task, same numbering as `plan.md` |
-| `review.md` | `/review` | Findings and what happened to each |
-| `pr.md` | `/pr`, only when no PR can be opened | Title, base branch, body, gate results |
+| `spec.md` | `/sdlc:spec` | Status, objective, scope and non-goals, success criteria, edge-case decisions, open questions |
+| `plan.md` | `/sdlc:plan`, then updated by every command | Approach, tasks with acceptance criteria, risks, command coverage, test evidence |
+| `todo.md` | `/sdlc:plan`, ticked by `/sdlc:build` | One checkbox per task, same numbering as `plan.md` |
+| `review.md` | `/sdlc:review` | Findings and what happened to each |
+| `pr.md` | `/sdlc:pr`, only when no PR can be opened | Title, base branch, body, gate results |
 
 A decision with a real trade-off goes in `docs/decisions/NNNN-<title>.md` as an ADR, linked
-from `spec.md` or `plan.md` (see `agentic-sdlc:documentation-and-adrs`).
+from `spec.md` or `plan.md` (see `sdlc:documentation-and-adrs`).
 
 Templates for the three main files are in `templates/` next to this skill.
 
@@ -43,9 +43,9 @@ Templates for the three main files are in `templates/` next to this skill.
 
 Artifacts are committed, so the history shows the loop ran in order and the PR carries them:
 
-- `/spec` commits `spec.md` once it's approved: `docs(sdlc): spec for <feature>`.
-- `/plan` commits `plan.md` and `todo.md` once the plan is approved: `docs(sdlc): plan for <feature>`.
-- `/build`, `/test`, `/review` and `/code-simplify` include the artifact lines they changed
+- `/sdlc:spec` commits `spec.md` once it's approved: `docs(sdlc): spec for <feature>`.
+- `/sdlc:plan` commits `plan.md` and `todo.md` once the plan is approved: `docs(sdlc): plan for <feature>`.
+- `/sdlc:build`, `/sdlc:test`, `/sdlc:review` and `/sdlc:code-simplify` include the artifact lines they changed
   (`todo.md`, coverage, test evidence, `review.md`) in the same commit as the code they
   belong to.
 
@@ -61,7 +61,7 @@ Stage files by name. Never `git add -A`.
 Status: Draft
 ```
 
-`/spec` changes it to `Status: Approved (YYYY-MM-DD)` only after the user explicitly says
+`/sdlc:spec` changes it to `Status: Approved (YYYY-MM-DD)` only after the user explicitly says
 yes. Downstream commands warn when the spec is still a draft.
 
 ## Command coverage
@@ -73,12 +73,12 @@ short note. Skipping a step is allowed when it's a conscious choice: write
 ```markdown
 ## SDLC command coverage
 
-- [x] /spec: approved 2026-10-06 after 6 questions
-- [x] /plan: 3 tasks
-- [ ] /build
-- [ ] /test
-- [ ] /review
-- [ ] /code-simplify
+- [x] /sdlc:spec: approved 2026-10-06 after 6 questions
+- [x] /sdlc:plan: 3 tasks
+- [ ] /sdlc:build
+- [ ] /sdlc:test
+- [ ] /sdlc:review
+- [ ] /sdlc:code-simplify
 ```
 
 A tick is a claim. Only tick a line after that command actually ran on this branch.
@@ -99,7 +99,7 @@ A red-then-green pair is the strongest evidence a test tests something.
 
 ## Gates
 
-A PR is ready only when every gate passes. `/pr` checks them. Any command may report them.
+A PR is ready only when every gate passes. `/sdlc:pr` checks them. Any command may report them.
 
 | Gate | Passes when |
 |---|---|

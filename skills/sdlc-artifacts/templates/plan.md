@@ -22,12 +22,12 @@ Spec: [spec.md](spec.md)
 
 ## SDLC command coverage
 
-- [ ] /spec
-- [ ] /plan
-- [ ] /build
-- [ ] /test
-- [ ] /review
-- [ ] /code-simplify
+- [ ] /sdlc:spec
+- [ ] /sdlc:plan
+- [ ] /sdlc:build
+- [ ] /sdlc:test
+- [ ] /sdlc:review
+- [ ] /sdlc:code-simplify
 
 ## Test evidence
 

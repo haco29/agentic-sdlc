@@ -2,7 +2,7 @@
 description: Five-axis review of the branch in a fresh context; findings go to sdlc/<branch>/review.md
 ---
 
-Invoke `agentic-sdlc:code-review-and-quality`. Paths come from `agentic-sdlc:sdlc-artifacts`.
+Invoke `sdlc:code-review-and-quality`. Paths come from `sdlc:sdlc-artifacts`.
 
 1. **Scope.** The branch diff against its base (`git diff $(git merge-base HEAD <default>)`),
    plus `spec.md` and `plan.md`.
@@ -19,5 +19,5 @@ Invoke `agentic-sdlc:code-review-and-quality`. Paths come from `agentic-sdlc:sdl
 5. **Red Queen.** When a finding is something a rule should have prevented (it recurs, or
    it breaks a project convention), propose the rule text and where it belongs
    (`CLAUDE.md` or a skill). Don't apply it without approval.
-6. Tick `/review` in the coverage checklist, for example `5 findings: 3 fixed, 2 won't fix`,
+6. Tick `/sdlc:review` in the coverage checklist, for example `5 findings: 3 fixed, 2 won't fix`,
    and commit `review.md` and `plan.md` as `docs(sdlc): review for <feature>`.

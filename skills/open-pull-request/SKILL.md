@@ -1,12 +1,12 @@
 ---
 name: open-pull-request
-description: Checks the SDLC gates for the current branch and opens a pull request that carries the evidence, or writes the PR description to sdlc/<branch>/pr.md when no PR can be opened. Use when the user runs /pr or asks to open, raise or prepare a pull request.
+description: Checks the SDLC gates for the current branch and opens a pull request that carries the evidence, or writes the PR description to sdlc/<branch>/pr.md when no PR can be opened. Use when the user runs /sdlc:pr or asks to open, raise or prepare a pull request.
 ---
 
 # Open a pull request
 
 A PR is the end of the loop, so it should prove the loop ran. Paths, gates and the coverage
-checklist are defined in `agentic-sdlc:sdlc-artifacts`.
+checklist are defined in `sdlc:sdlc-artifacts`.
 
 ## Steps
 
@@ -48,7 +48,7 @@ checklist are defined in `agentic-sdlc:sdlc-artifacts`.
      and tell the user to paste it into their review tool. Without write access, also say
      why, and that a fork or a copy of their own would let them open a real PR. Never
      create a fork or a repo for them.
-8. **Tick nothing new.** `/pr` is not in the coverage list; the PR itself is the evidence.
+8. **Tick nothing new.** `/sdlc:pr` is not in the coverage list; the PR itself is the evidence.
 
 ## Never
 

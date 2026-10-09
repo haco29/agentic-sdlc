@@ -3,8 +3,8 @@ description: Prove it works. Close test gaps against the spec, or reproduce a bu
 argument-hint: "[behavior or bug to test]"
 ---
 
-Invoke `agentic-sdlc:test-driven-development`. Paths and the evidence format come from
-`agentic-sdlc:sdlc-artifacts`.
+Invoke `sdlc:test-driven-development`. Paths and the evidence format come from
+`sdlc:sdlc-artifacts`.
 
 ## With an argument
 
@@ -22,6 +22,6 @@ Invoke `agentic-sdlc:test-driven-development`. Paths and the evidence format com
 
 ## Always
 
-Run the full suite and linters, log the run in Test evidence, and tick `/test` in the
+Run the full suite and linters, log the run in Test evidence, and tick `/sdlc:test` in the
 coverage checklist with a note such as `4 criteria, 2 gaps closed`. Commit the new tests,
 any fixes and `plan.md` as `test: <what>`.

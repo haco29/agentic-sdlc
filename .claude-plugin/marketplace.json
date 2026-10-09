@@ -9,10 +9,10 @@
   },
   "plugins": [
     {
-      "name": "agentic-sdlc",
+      "name": "sdlc",
       "source": "./",
-      "description": "An agentic SDLC: /spec → /plan → /build → /test → /review → /code-simplify → /pr, with artifacts per branch and gates before every PR.",
-      "version": "0.1.0"
+      "description": "An agentic SDLC: /sdlc:spec → plan → build → test → review → code-simplify → pr, with artifacts per branch and gates before every PR.",
+      "version": "0.2.0"
     }
   ]
 }

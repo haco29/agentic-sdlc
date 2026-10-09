@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Vendors skills, agents and references from addyosmani/agent-skills (MIT) at a
-# pinned commit, then applies two mechanical rewrites so they fit this kit:
-#   1. skill namespace  agent-skills:<skill>  ->  agentic-sdlc:<skill>
+# pinned commit, then applies three mechanical rewrites so they fit this kit:
+#   1. skill namespace  agent-skills:<skill>  ->  sdlc:<skill>
 #   2. artifact paths   tasks/plan.md, tasks/todo.md, SPEC.md  ->  sdlc/<branch>/...
+#   3. command names    /spec, /plan, ... /pr  ->  /sdlc:spec, /sdlc:plan, ... /sdlc:pr
 #
 # Usage: scripts/sync-upstream.sh [<commit-or-ref>]
 #   UPSTREAM_REPO  git URL or local path (default: the GitHub repo)
@@ -42,12 +43,13 @@ while IFS= read -r f; do files+=("$f"); done < <(find "$ROOT/agents" "$ROOT/refe
 
 for f in "${files[@]}"; do
   perl -pi -e '
-    s/\bagent-skills:(?=[a-z])/agentic-sdlc:/g;
+    s/\bagent-skills:(?=[a-z])/sdlc:/g;
     s#tasks/plan\.md#sdlc/<branch>/plan.md#g;
     s#tasks/todo\.md#sdlc/<branch>/todo.md#g;
     s#`tasks/`#`sdlc/<branch>/`#g;
     s#(?<![/\w-])`SPEC\.md`#`sdlc/<branch>/spec.md`#g;
     s#(?<![/\w`-])SPEC\.md(?![\w`])#sdlc/<branch>/spec.md#g;
+    s#(?<![\w/.:~-])/(spec|plan|build|test|review|code-simplify|pr)(?![\w/-]|\.\w)#/sdlc:$1#g;
   ' "$f"
 done
 
@@ -60,11 +62,13 @@ The skills, agents and references listed below are vendored from
 
 Commit: $SHA
 
-Two mechanical rewrites are applied by \`scripts/sync-upstream.sh\`, nothing else:
+Three mechanical rewrites are applied by \`scripts/sync-upstream.sh\`, nothing else:
 
-1. Skill references \`agent-skills:<skill>\` become \`agentic-sdlc:<skill>\`.
+1. Skill references \`agent-skills:<skill>\` become \`sdlc:<skill>\`.
 2. Artifact paths \`SPEC.md\`, \`tasks/plan.md\` and \`tasks/todo.md\` become
    \`sdlc/<branch>/spec.md\`, \`plan.md\` and \`todo.md\`.
+3. Command names \`/spec\`, \`/plan\`, \`/build\`, \`/test\`, \`/review\`, \`/code-simplify\`
+   and \`/pr\` become \`/sdlc:spec\` and so on, because plugin commands are namespaced.
 
 To update, run \`scripts/sync-upstream.sh <commit>\` and review the diff.
 
