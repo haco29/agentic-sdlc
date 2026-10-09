@@ -46,7 +46,7 @@ Existing files are skipped unless you pass `--force`.
 | `/test` | Maps every success criterion and edge case to a test and closes the gaps; or reproduces a bug test-first | New tests, a criteria → tests table |
 | `/review` | Five-axis review (correctness, readability, architecture, security, performance) by a reviewer agent in its own context | `review.md` with a status per finding |
 | `/code-simplify` | Simplifies without changing behavior, one change at a time, tests green throughout | A `refactor:` commit, or "nothing to simplify" |
-| `/pr` | Checks the gates and opens a PR that carries the evidence; writes `pr.md` when there's no GitHub | A PR, or `pr.md` |
+| `/pr` | Checks the gates and opens a PR that carries the evidence; writes `pr.md` when there's no GitHub or no write access | A PR, or `pr.md` |
 
 ## Artifacts and gates
 

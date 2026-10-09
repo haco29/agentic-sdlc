@@ -33,16 +33,21 @@ checklist are defined in `agentic-sdlc:sdlc-artifacts`.
      - **Review**: from `review.md`, what was fixed and what was deferred, with reasons.
      - **Out of scope**: the spec's non-goals and any follow-ups.
 6. **Choose the repo and base.** The PR goes to the repository `origin` points at:
-   `gh repo view --json nameWithOwner,isFork,defaultBranchRef`. On a fork, `gh` would
-   otherwise target the parent, so always pass `--repo <nameWithOwner>` unless the user asks
-   for the parent. The base is the branch the user named, else that repo's default branch.
+   `gh repo view --json nameWithOwner,isFork,defaultBranchRef,viewerPermission`. On a fork,
+   `gh` would otherwise target the parent, so always pass `--repo <nameWithOwner>` unless the
+   user asks for the parent. The base is the branch the user named, else that repo's default
+   branch.
 7. **Open it.**
-   - When `gh auth status` succeeds and `origin` is on GitHub: `git push -u origin HEAD`,
-     write the body to a temporary file, then
+   - When `gh auth status` succeeds, `origin` is on GitHub, and `viewerPermission` is
+     `WRITE`, `MAINTAIN` or `ADMIN`: `git push -u origin HEAD`, write the body to a temporary
+     file, then
      `gh pr create --repo <nameWithOwner> --base <base> --title "<title>" --body-file <file>`
      (add `--draft` when a gate failed). Print the PR URL.
-   - Otherwise (no GitHub, no `gh`, no network): write `$DIR/pr.md` with the title, base
-     and body, and tell the user to paste it into their review tool.
+   - Otherwise (no GitHub, no `gh`, no network, or no write access to `origin`, as in a
+     plain clone of someone else's repo): write `$DIR/pr.md` with the title, base and body,
+     and tell the user to paste it into their review tool. Without write access, also say
+     why, and that a fork or a copy of their own would let them open a real PR. Never
+     create a fork or a repo for them.
 8. **Tick nothing new.** `/pr` is not in the coverage list; the PR itself is the evidence.
 
 ## Never

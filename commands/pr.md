@@ -1,5 +1,5 @@
 ---
-description: Check the SDLC gates and open a pull request with the evidence, or write sdlc/<branch>/pr.md when offline
+description: Check the SDLC gates and open a pull request with the evidence, or write sdlc/<branch>/pr.md when no PR can be opened
 argument-hint: "[base branch]"
 ---
 
