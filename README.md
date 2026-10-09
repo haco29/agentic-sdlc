@@ -26,6 +26,15 @@ Restart Claude Code and type `/sdlc`: you should see `/sdlc:spec` through `/sdlc
 namespace keeps `/sdlc:plan` and `/sdlc:review` clear of Claude Code's own `/plan` and
 `/review`.
 
+**Network blocks GitHub?** Copy the repo folder, or unzip a copy of it, so you have a
+folder named `agentic-sdlc`. Start Claude Code in the folder that contains it, and add the
+marketplace by path instead:
+
+```text
+/plugin marketplace add ./agentic-sdlc
+/plugin install sdlc@haco29
+```
+
 ### Cursor, or Claude Code without plugins
 
 ```bash
