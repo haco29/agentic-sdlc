@@ -37,8 +37,8 @@ for d in "$ROOT"/skills/*/; do copy "${d%/}" "$TARGET/skills/$(basename "$d")"; 
 if [[ "$TARGET" == "$HOME/.claude" ]]; then
   for f in "$ROOT"/agents/*.md; do copy "$f" "$TARGET/agents/$(basename "$f")"; done
 fi
-# Skills point at references/ next to them in the plugin; keep a copy alongside.
-copy "$ROOT/references" "$TARGET/agentic-sdlc/references"
+# The vendored skills link to ../../references/, so it goes next to skills/.
+copy "$ROOT/references" "$TARGET/references"
 
 echo "agentic-sdlc: $copied copied, $skipped skipped, into $TARGET"
 echo "Restart your editor, then type / and look for /spec ... /pr."
