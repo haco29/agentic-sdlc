@@ -10,7 +10,7 @@ Paths, the coverage checklist and the gates come from the `sdlc:sdlc-artifacts` 
    this step.
 3. **Don't overwrite work in progress.** If `$DIR/plan.md` or `todo.md` exists with unticked
    tasks for different work, stop and ask.
-4. **Write `$DIR/plan.md`** from the skill's `templates/plan.md`:
+4. **Write `$DIR/plan.md`** from `skills/sdlc-artifacts/templates/plan.md`:
    - Approach: where the change lives and why, following the project's conventions.
    - Tasks: vertical slices, each with acceptance criteria (mapped to spec success
      criteria), the test that proves it, and the files it touches. Prefer 2–5 tasks.

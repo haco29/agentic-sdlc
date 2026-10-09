@@ -19,9 +19,9 @@ Paths, the status line and the gates come from the `sdlc:sdlc-artifacts` skill.
 
    Stop when you can predict the user's answers.
 5. **Write the spec.** Invoke `sdlc:spec-driven-development` and write
-   `$DIR/spec.md` from the skill's `templates/spec.md`, with `Status: Draft`. Every answer
-   from the grilling lands in "Edge cases and decisions". Success criteria are numbered and
-   testable.
+   `$DIR/spec.md` from `skills/sdlc-artifacts/templates/spec.md`, with `Status: Draft`.
+   Every answer from the grilling lands in "Edge cases and decisions". Success criteria are
+   numbered and testable.
 6. **Approve.** Show the spec and ask for approval. Only on an explicit yes, set
    `Status: Approved (<today>)` and commit `spec.md` (plus any ADR) as
    `docs(sdlc): spec for <feature>`. A decision with a real trade-off becomes an ADR
