@@ -206,7 +206,7 @@ Lighthouse Performance score: ≥ 90
 npx bundlesize --config bundlesize.config.json
 
 # Lighthouse CI
-npx lhci autorun
+npx @lhci/cli autorun
 ```
 
 ## See Also

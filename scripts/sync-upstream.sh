@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # Vendors skills, agents and references from addyosmani/agent-skills (MIT) at a
-# pinned commit, then applies three mechanical rewrites so they fit this kit:
+# pinned commit, then applies four mechanical rewrites so they fit this kit:
 #   1. skill namespace  agent-skills:<skill>  ->  sdlc:<skill>
 #   2. artifact paths   tasks/plan.md, tasks/todo.md, SPEC.md  ->  sdlc/<branch>/...
 #   3. command names    /spec, /plan, ... /pr  ->  /sdlc:spec, /sdlc:plan, ... /sdlc:pr
+#   4. npm package      npx lhci  ->  npx @lhci/cli (lhci on npm is a typosquat)
 #
 # Usage: scripts/sync-upstream.sh [<commit-or-ref>]
 #   UPSTREAM_REPO  git URL or local path (default: the GitHub repo)
@@ -50,6 +51,7 @@ for f in "${files[@]}"; do
     s#(?<![/\w-])`SPEC\.md`#`sdlc/<branch>/spec.md`#g;
     s#(?<![/\w`-])SPEC\.md(?![\w`])#sdlc/<branch>/spec.md#g;
     s#(?<![\w/.:~-])/(spec|plan|build|test|review|code-simplify|pr)(?![\w/-]|\.\w)#/sdlc:$1#g;
+    s#\bnpx lhci\b#npx \@lhci/cli#g;
   ' "$f"
 done
 
@@ -62,13 +64,15 @@ The skills, agents and references listed below are vendored from
 
 Commit: $SHA
 
-Three mechanical rewrites are applied by \`scripts/sync-upstream.sh\`, nothing else:
+Four mechanical rewrites are applied by \`scripts/sync-upstream.sh\`, nothing else:
 
 1. Skill references \`agent-skills:<skill>\` become \`sdlc:<skill>\`.
 2. Artifact paths \`SPEC.md\`, \`tasks/plan.md\` and \`tasks/todo.md\` become
    \`sdlc/<branch>/spec.md\`, \`plan.md\` and \`todo.md\`.
 3. Command names \`/spec\`, \`/plan\`, \`/build\`, \`/test\`, \`/review\`, \`/code-simplify\`
    and \`/pr\` become \`/sdlc:spec\` and so on, because plugin commands are namespaced.
+4. \`npx lhci\` becomes \`npx @lhci/cli\`. Lighthouse CI is published as \`@lhci/cli\`;
+   \`lhci\` on npm is a typosquat held by an unrelated account.
 
 To update, run \`scripts/sync-upstream.sh <commit>\` and review the diff.
 

@@ -84,8 +84,8 @@ in [`skills/sdlc-artifacts`](skills/sdlc-artifacts/SKILL.md).
 | `commands/`, `skills/sdlc-artifacts`, `skills/open-pull-request` | This repo: the loop, the artifact layout, the gates and `/sdlc:pr` |
 | `skills/*` (everything else), `agents/`, `references/` | Vendored from [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) at a pinned commit, see [UPSTREAM.md](UPSTREAM.md) |
 
-The vendored files get three mechanical rewrites (skill namespace, artifact paths and command
-names) and are otherwise unchanged. To update them:
+The vendored files get four mechanical rewrites (skill namespace, artifact paths, command
+names and a typosquatted npm package) and are otherwise unchanged. To update them:
 
 ```bash
 scripts/sync-upstream.sh <commit>   # then review the diff
