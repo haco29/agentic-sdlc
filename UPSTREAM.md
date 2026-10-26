@@ -6,7 +6,9 @@ The skills, agents and references listed below are vendored from
 
 Commit: 1401c8b8030e023baeebb31781a6653fe8e93026
 
-Four mechanical rewrites are applied by `scripts/sync-upstream.sh`, nothing else:
+They were copied once at that commit and are maintained here from now on: they don't
+pull upstream changes, and any change to them goes through a PR like the rest of the repo.
+They differ from upstream in four ways, nothing else:
 
 1. Skill references `agent-skills:<skill>` become `sdlc:<skill>`.
 2. Artifact paths `SPEC.md`, `tasks/plan.md` and `tasks/todo.md` become
@@ -15,8 +17,6 @@ Four mechanical rewrites are applied by `scripts/sync-upstream.sh`, nothing else
    and `/pr` become `/sdlc:spec` and so on, because plugin commands are namespaced.
 4. `npx lhci` becomes `npx @lhci/cli`. Lighthouse CI is published as `@lhci/cli`;
    `lhci` on npm is a typosquat held by an unrelated account.
-
-To update, run `scripts/sync-upstream.sh <commit>` and review the diff.
 
 ## Vendored skills
 
