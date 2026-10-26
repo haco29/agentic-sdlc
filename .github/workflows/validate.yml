@@ -22,4 +22,3 @@ jobs:
       - name: Check shell scripts
         run: |
           bash -n scripts/install.sh
-          bash -n scripts/sync-upstream.sh

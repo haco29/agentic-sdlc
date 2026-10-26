@@ -85,7 +85,7 @@ jobs:
         run: npm run lint
 
       - name: Type check
-        run: npx tsc --noEmit
+        run: npx -p typescript tsc --noEmit
 
       - name: Test
         run: npm test -- --coverage
@@ -345,7 +345,7 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: '22', cache: 'npm' }
       - run: npm ci
-      - run: npx tsc --noEmit
+      - run: npx -p typescript tsc --noEmit
 
   test:
     runs-on: ubuntu-latest
