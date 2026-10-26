@@ -226,7 +226,7 @@ npm test
 npm run lint
 
 # 5. Run type checking
-npx tsc --noEmit
+npx -p typescript tsc --noEmit
 ```
 
 Automate this with git hooks:

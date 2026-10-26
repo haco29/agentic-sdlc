@@ -8,7 +8,7 @@ Commit: 1401c8b8030e023baeebb31781a6653fe8e93026
 
 They were copied once at that commit and are maintained here from now on: they don't
 pull upstream changes, and any change to them goes through a PR like the rest of the repo.
-They differ from upstream in four ways, nothing else:
+At the freeze they differed from upstream in four ways; later changes are in git history:
 
 1. Skill references `agent-skills:<skill>` become `sdlc:<skill>`.
 2. Artifact paths `SPEC.md`, `tasks/plan.md` and `tasks/todo.md` become
