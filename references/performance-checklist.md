@@ -199,8 +199,8 @@ npx webpack-bundle-analyzer stats.json
 # or for Vite:
 npx vite-bundle-visualizer
 
-# Check bundle size
-npx bundlesize
+# Check bundle size budget (local; uploads nothing)
+npx size-limit
 
 # Web Vitals in code
 import { onLCP, onINP, onCLS } from 'web-vitals';

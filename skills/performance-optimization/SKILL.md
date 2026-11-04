@@ -202,8 +202,8 @@ Lighthouse Performance score: ≥ 90
 
 **Enforce in CI:**
 ```bash
-# Bundle size check
-npx bundlesize --config bundlesize.config.json
+# Bundle size budget (local; uploads nothing)
+npx size-limit
 
 # Lighthouse CI
 npx @lhci/cli autorun
