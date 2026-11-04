@@ -44,7 +44,7 @@ Pull Request Opened
 │   ↓ pass         │
 │   SECURITY AUDIT │  npm audit
 │   ↓ pass         │
-│   BUNDLE SIZE    │  bundlesize check
+│   BUNDLE SIZE    │  size-limit budget
 └─────────────────┘
     │
     ▼
